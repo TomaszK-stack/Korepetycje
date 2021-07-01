@@ -29,38 +29,42 @@ def base(response):
 class CreateListProfile(ListView):
     model = Profile
     template_name = 'tomek.html'
-    # def get(self,response,*args,**kwargs):
-    #     return HttpResponse("Hello world")
+
+
     def get(self,response,*args,**kwargs):
         ls = Profile.objects.all()
         form = Search(response.POST or None)
+
         indeks = {
             "ls":ls,
             "form":form,
 
         }
-
-
         return render(response,'tomek.html',indeks)
 
 
 
-    # def post(self,response,*args,**kwargs):
-    #
-    #     return HttpResponse("Hello worldfsdfsdf")
+
+
+
+
+
+
+
+
 
 
 def new(response):
     ls = Profile.objects.all()
     tab = []
-    form = Search(response.POST)
-    # if response.method == "POST":
-    #
-    #     for z in ls:
-    #         if z.subject == sub:
-    #             tab.append(z)
+    form = Search(response.POST or None)
     if response.method == "POST":
         sub = response.POST.get('subject')
 
-    indeks = {"form":form, "tab":tab}
+        for z in ls:
+            if z.subject == sub:
+                tab.append(z)
+
+
+    indeks = {"form":form, "tab":tab, "sub":sub}
     return render(response,'tomek.html',indeks)
