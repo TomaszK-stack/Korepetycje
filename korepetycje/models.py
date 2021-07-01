@@ -6,7 +6,7 @@ class Subject(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
-        return f"Subject:{self.name}"
+        return f"{self.name}"
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

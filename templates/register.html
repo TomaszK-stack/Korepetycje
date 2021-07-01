@@ -1,4 +1,4 @@
-{% extends 'tomek.html' %}
+{% extends 'main.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div style=" position:absolute; left:50px; " class="font">
@@ -14,7 +14,7 @@
     {% csrf_token %}
 
 
-        {{form|crispy}}
+    {{form|crispy}}
     <div>
             <button type="button" class="button">Register</button>
 

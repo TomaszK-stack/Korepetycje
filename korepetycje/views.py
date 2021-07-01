@@ -9,7 +9,7 @@ def base(response):
     form = Search(response.POST or None)
     if response.method == "POST":
         a = response.POST.get('name')
-        print(Subject.objects.get(name=a))
+        print(Profile.objects.get(name=a))
     tab = ['sdasd',4]
     ls = Profile.objects.all()
     index = {
@@ -18,17 +18,15 @@ def base(response):
         "ls":ls,
         }
 
-    class CreateListProfile(ListView):
-        model = Profile
-        template_name = 'tomek.html'
 
 
-    return render(response, "tomek.html", index)
+
+    return render(response, "Strglowna.html", index)
 
 
 class CreateListProfile(ListView):
     model = Profile
-    template_name = 'tomek.html'
+    template_name = 'Strglowna.html'
 
 
     def get(self,response,*args,**kwargs):
@@ -40,7 +38,7 @@ class CreateListProfile(ListView):
             "form":form,
 
         }
-        return render(response,'tomek.html',indeks)
+        return render(response,'Strglowna.html',indeks)
 
 
 
@@ -58,13 +56,20 @@ def new(response):
     ls = Profile.objects.all()
     tab = []
     form = Search(response.POST or None)
+    sub = ''
     if response.method == "POST":
         sub = response.POST.get('subject')
 
-        for z in ls:
-            if z.subject == sub:
-                tab.append(z)
+        # for z in ls:
+        #     if z.subject == sub:
+        #         tab.append(z)
 
 
-    indeks = {"form":form, "tab":tab, "sub":sub}
-    return render(response,'tomek.html',indeks)
+    indeks = {"form":form, "tab":tab, "sub":sub, "ls": ls}
+    return render(response,'Strglowna.html',indeks)
+
+class CreateListProfile(ListView):
+    model = Profile
+    template_name = 'list.html'
+
+
