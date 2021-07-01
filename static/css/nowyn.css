@@ -1,0 +1,134 @@
+body{
+    background-color: 	black;
+    font-size: 21px;
+    font-family: Helvetica;
+    color: white;
+    margin: 0 !important;
+
+
+}
+
+h1{
+
+
+}
+.sidenav {
+			height:100px;
+			width:100%;
+			z-index:1;
+			top:0;
+			left:0;
+			text-align: center;
+
+
+			background-color: white;
+			overflow-x: :hidden;
+            position: fixed;
+            border:yes;
+
+
+		}
+
+
+main{
+			margin-left:160px;
+			padding: 0px 10px;
+		}
+.button{
+
+    background-color: orange; /* Green */
+  border: yes;
+  color: white;
+  padding: 3px 280px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+.content
+{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+	padding-top: 10px;
+}
+ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 35px;
+	line-height: 200%;
+	display: inline-block;
+}
+ol a
+{
+	color: black;
+	text-decoration: none;
+	display: block;
+}
+
+ol > li
+{
+	float: left;
+	width: 200px;
+	height: 40px;
+	border-right: 3px dashed #008080;
+ }
+
+ol > li:first-child
+{
+	border-left: 3px dashed #008080;
+}
+
+ol > li:hover
+{
+	background-color: #008080;
+}
+
+ol > li:hover > a
+{
+	color: white;
+}
+
+ol > li > ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+	display: none;
+}
+
+ol > li:hover > ul
+{
+	display: block;
+}
+
+ol > li > ul > li
+{
+	background-color:orange;
+	position: relative;
+	z-index: 100;
+	border-top: 1px dashed #751b1b;
+}
+
+ol > li > ul > li:hover
+{
+	background-color: black;
+}
+
+ol > li > ul > li:hover > a
+{
+	color: yellow;
+}
+.font{
+    font-size: 80px;
+}
+.font1{
+    font-size: 20px;
+    color: white;
+}

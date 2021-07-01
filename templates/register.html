@@ -1,0 +1,25 @@
+{% extends 'tomek.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div style=" position:absolute; left:50px; " class="font">
+    Zarejestruj się!
+    <div class="font1">
+        <a href="#">Masz już konto?</a>
+        <div/>
+
+
+</div>
+<div style = "position:absolute; left:620px;  top:20px;>
+<form method="post">
+    {% csrf_token %}
+
+
+        {{form|crispy}}
+    <div>
+            <button type="button" class="button">Register</button>
+
+    </div>
+
+</form>
+</div>
+{% endblock %}
