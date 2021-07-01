@@ -51,4 +51,16 @@ class CreateListProfile(ListView):
 
 
 def new(response):
-    return render(response,'tomek.html',{})
+    ls = Profile.objects.all()
+    tab = []
+    form = Search(response.POST)
+    # if response.method == "POST":
+    #
+    #     for z in ls:
+    #         if z.subject == sub:
+    #             tab.append(z)
+    if response.method == "POST":
+        sub = response.POST.get('subject')
+
+    indeks = {"form":form, "tab":tab}
+    return render(response,'tomek.html',indeks)

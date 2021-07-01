@@ -1,4 +1,4 @@
 from django import forms
 
 class Search(forms.Form):
-    name = forms.CharField()
+    subject = forms.CharField(label='Znajdź swojego korepetytora!',required=False)
