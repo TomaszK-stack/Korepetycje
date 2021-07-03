@@ -1,6 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load hitcount_tags %}
+
+
 
     {% block content %}
         <div class="content">
@@ -11,16 +14,11 @@
             <button type="submit" class="btn btn-warning">Szukaj</button>
 
            </form>
-
-            {% for obj in ls %}
-                {% for z in obj.subject.all %}
-
-                    {% if z==sub %}
-                        {{obj}}
-                    {% endif %}
-
-                {% endfor %}
-            {% endfor %}
+        {{object.name}}
+        {% for obj in object.subject.all %}
+            {{obj}}
+        {% endfor %}
+            {% get_hit_count for profile %}
 
 
     </div>

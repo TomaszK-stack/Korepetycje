@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .forms import Search
-from .models import Subject, Profile
+from .models import Subject, Profile, Post
 from django.views.generic import ListView,View
 from django.http import HttpResponse
+from hitcount.views import HitCountDetailView
+from django.views.generic.detail import DetailView
 # Create your views here.
 
 def base(response):
@@ -27,6 +29,7 @@ def base(response):
 class CreateListProfile(ListView):
     model = Profile
     template_name = 'Strglowna.html'
+
 
 
     def get(self,response,*args,**kwargs):
@@ -71,5 +74,19 @@ def new(response):
 class CreateListProfile(ListView):
     model = Profile
     template_name = 'list.html'
+
+
+class Count(HitCountDetailView):
+    model = Profile
+    template_name = "Strglowna.html"
+    count_hit = True
+    slug_field = "slug"
+
+# class PostDetailView(DetailView):
+#     queryset = Profile.objects.all()
+#     template_name = "Strglowna.html"
+#     slug_field = "slug"
+
+
 
 

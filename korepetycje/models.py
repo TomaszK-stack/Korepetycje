@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from autoslug import AutoSlugField
 
 
 class Subject(models.Model):
@@ -19,4 +20,11 @@ class Profile(models.Model):
             return f"{self.user.username}"
         else:
             return f"{self.name} {self.surname}"
+class Post(models.Model):
+    visits_count = models.IntegerField()
+    slug = AutoSlugField(populate_from='title')
+
+
+
+
 

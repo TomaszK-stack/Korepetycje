@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'korepetycje.apps.KorepetycjeConfig',
     'register.apps.RegisterConfig',
     'crispy_forms',
+    'hitcount',
+    'autoslug',
+
 ]
 
 MIDDLEWARE = [

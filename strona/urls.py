@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from register import views as v
+from korepetycje import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', include('korepetycje.urls')),
-    path('register',v.register, name ='register')
+    path('register',v.register, name ='register'),
+    # path('<str:pk>', views.Detail.as_view()),
 
 ]
