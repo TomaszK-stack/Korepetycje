@@ -1,0 +1,24 @@
+<!--<table class="table">-->
+<!--      <thead>-->
+
+<!--    <th scope="col">Name</th>-->
+<!--    <th scope="col">Surname</th>-->
+<!--    <th scope="col">Subject</th>-->
+<!--</thead>-->
+
+
+<!--        {% for obj in ls %}-->
+<!--<tr>-->
+<!--        <th scope="col">{{obj.name}}</th>-->
+<!--        <th scope="col">{{obj.surname}}</th>-->
+
+<!--                {% for sub in obj.subject.all %}-->
+<!--                <th scope="col">{{sub}}</th>-->
+<!--                {% endfor %}-->
+<!--        {% endfor %}-->
+<!--    </tr>-->
+<!--</table>-->
+<!--{% for obj in object_list %}-->
+
+<!--<a href="{{obj.get_absolute_url}}">sdasd</a>-->
+<!--{% endfor %}-->

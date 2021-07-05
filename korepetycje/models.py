@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
-
+from django.shortcuts import reverse
 
 class Subject(models.Model):
     name = models.CharField(max_length=200)
@@ -20,9 +20,12 @@ class Profile(models.Model):
             return f"{self.user.username}"
         else:
             return f"{self.name} {self.surname}"
+    def get_absolute_url(self):
+        return reverse('korepetycje:detail', kwargs={'pk': self.pk})
+
 class Post(models.Model):
     visits_count = models.IntegerField()
-    slug = AutoSlugField(populate_from='title')
+
 
 
 

@@ -14,14 +14,9 @@
             <button type="submit" class="btn btn-warning">Szukaj</button>
 
            </form>
-        {{object.name}}
-        {% for obj in object.subject.all %}
-            {{obj}}
-        {% endfor %}
-            {% get_hit_count for profile %}
-
 
     </div>
+{{df|safe}}
 
     {% endblock %}
 

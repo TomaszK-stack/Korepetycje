@@ -1,9 +1,38 @@
 {% extends 'main.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-{% for obj in object_list %}
-{{obj}}
-{% endfor %}
+
+
+  <div class="content">
+           <form method="POST" action="">
+                   {% csrf_token %}
+
+               {{form|crispy}}
+            <button type="submit" class="btn btn-warning">Szukaj</button>
+
+           </form>
+
+    </div>
+<table class="table">
+      <thead>
+
+    <th scope="col">Name</th>
+    <th scope="col">Surname</th>
+    <th scope="col">Subject</th>
+</thead>
+
+
+        {% for obj in object_list %}
+<tr>
+        <th scope="col"><a href="{{obj.get_absolute_url}}">{{obj.name}}</a></th>
+        <th scope="col">{{obj.surname}}</th>
+
+                {% for sub in obj.subject.all %}
+                <th scope="col">{{sub}}</th>
+                {% endfor %}
+        {% endfor %}
+    </tr>
+</table>
 
 
 {% endblock %}

@@ -5,6 +5,7 @@ from django.views.generic import ListView,View
 from django.http import HttpResponse
 from hitcount.views import HitCountDetailView
 from django.views.generic.detail import DetailView
+import pandas as pd
 # Create your views here.
 
 def base(response):
@@ -56,36 +57,50 @@ class CreateListProfile(ListView):
 
 
 def new(response):
-    ls = Profile.objects.all()
+    df = None
     tab = []
+
+
     form = Search(response.POST or None)
-    sub = ''
     if response.method == "POST":
-        sub = response.POST.get('subject')
-
-        # for z in ls:
-        #     if z.subject == sub:
-        #         tab.append(z)
+        n = response.POST.get('subject')
+        a = Subject.objects.filter(name = n).first()
 
 
-    indeks = {"form":form, "tab":tab, "sub":sub, "ls": ls}
+
+        qs = Profile.objects.filter(subject = a)
+        for query in qs:
+            tab.append(query.subject)
+        df = pd.DataFrame(qs.values())
+        df['Subject'] = tab
+        df = df.drop(columns=["id","user_id"])
+
+        df = df.to_html()
+
+        print(df)
+
+
+    indeks = {"form":form, "df":df}
     return render(response,'Strglowna.html',indeks)
 
 class CreateListProfile(ListView):
     model = Profile
     template_name = 'list.html'
+    def get(self,response,*args,**kwargs):
+        form = Search(re)
 
 
 class Count(HitCountDetailView):
-    model = Profile
+    model = Post
     template_name = "Strglowna.html"
     count_hit = True
-    slug_field = "slug"
+    # slug_field = "slug"
 
-# class PostDetailView(DetailView):
-#     queryset = Profile.objects.all()
-#     template_name = "Strglowna.html"
-#     slug_field = "slug"
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = "Detail.html"
+
+
 
 
 
